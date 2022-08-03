@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/styles/login.css" rel="stylesheet">
+    <script src="/scripts/login-check.js"></script>
+  </head>
+  <body>
+    <div id="login-grid">
+      <div id="left-side">
+      </div>
+      <div id="login-input">
+        <div id="welcome-heading">
+          Welcome
+        </div>
+        <% if(messages.error) {%>
+          <%= messages.error %>
+        <% } %>
+        <form action="/login" method="POST">
+          <div class="info-input">
+            <span style="font-weight: bold">Email or username</span>
+            <input id="username-bar" type="text" placeholder="Email or username" name="email" required>
+          </div>
+          <div class="info-input">
+            <span style="font-weight: bold">Password</span>
+            <input id="password-bar" type="password" placeholder="Password" name="password" required>
+          </div>
+          <div class="info-input">
+            <button id="login-button" type="submit">
+              <span id="login-text">Login</span>
+            </button>
+          </div>
+        </form>
+        <a href="/register">Create an account</a>
+      </div>
+    </div>    
+  </body>
+</html>
+
+<!--width: 1440px-->
