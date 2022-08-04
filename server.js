@@ -32,20 +32,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', checkAuthenticated, (req, res) => {
-  res.render('dashboard.ejs');
+  res.render('dashboard.ejs', { name: req.user.name });
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', checkLoggedIn, (req, res) => {
   res.render('login.ejs');
-})
+});
 
-app.get('/register', (req, res) => {
+app.get('/register', checkLoggedIn, (req, res) => {
   res.render('register.ejs');
-})
+});
+
+app.get('/course', (req, res) => {
+  res.render('courses.ejs');
+});
 
 app.get('/problems', (req, res) => {
   res.render('problems.ejs');
-})
+});
 
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
@@ -73,8 +77,14 @@ function checkAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
     return next();
   }
-
   res.redirect('/login');
+}
+
+function checkLoggedIn(req, res, next) {
+  if(!req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
 }
 
 app.listen(3000);
