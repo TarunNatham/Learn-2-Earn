@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="/styles/login.css" rel="stylesheet">
-    <script src="/scripts/login-check.js"></script>
   </head>
   <body>
     <div id="login-grid">
@@ -16,7 +15,7 @@
         <div id="welcome-heading">
           Welcome
         </div>
-        <% if(messages.error) {%>
+        <% if(messages.error) { %>
           <%= messages.error %>
         <% } %>
         <form action="/login" method="POST">

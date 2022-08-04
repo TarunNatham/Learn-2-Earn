@@ -5,8 +5,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="/scripts/courses.js" defer></script>
+    <style>
+      ul {
+        list-style-type: none;
+        margin-top: 0;
+        margin-left: 4px;
+        padding: 0;
+        width: 200px;
+      }
+
+      .link {
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 16px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+
+    </style>
   </head>
   <body>
-    
+    <ul>
+      <li><button class="link" id="simple-addition">Simple Addition</button></li>
+      <li><button class="link" id="simple-subtraction">Simple Subtraction</button></li>
+      <li><button class="link" id="mult-by-ten">Multiply by 10</button></li>
+      <li><button class="link" id="mult-by-five">Multiple by 5</button></li>
+    </ul>
   </body>
 </html>

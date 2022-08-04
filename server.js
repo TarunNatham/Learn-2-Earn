@@ -43,7 +43,7 @@ app.get('/register', checkLoggedIn, (req, res) => {
   res.render('register.ejs');
 });
 
-app.get('/course', (req, res) => {
+app.get('/courses', (req, res) => {
   res.render('courses.ejs');
 });
 

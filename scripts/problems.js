@@ -7,7 +7,10 @@ let choices = [];
 getQuestion();
 
 function getQuestion() {
-  const url = 'http://127.0.0.1:5000/question/?question=' + 'mult-by-five' + '&difficulty=' + difficulty;
+  const questionType = localStorage.getItem('questionType');
+  console.log(questionType);
+  const url = 'http://127.0.0.1:5000/question/?question=' + questionType + '&difficulty=' + difficulty;
+  console.log
   fetch(url)
     .then(response => {
       return response.json()
@@ -34,6 +37,7 @@ function updateChoices(choices) {
     choices.splice(index, 1);
   })
 }
+
 document.querySelectorAll('.choice').forEach(item => {
   item.addEventListener('click', event => {
     if(item.textContent == answer && !answered) {
