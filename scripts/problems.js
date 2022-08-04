@@ -8,9 +8,7 @@ getQuestion();
 
 function getQuestion() {
   const questionType = localStorage.getItem('questionType');
-  console.log(questionType);
   const url = 'http://127.0.0.1:5000/question/?question=' + questionType + '&difficulty=' + difficulty;
-  console.log
   fetch(url)
     .then(response => {
       return response.json()
@@ -55,7 +53,6 @@ document.querySelectorAll('.choice').forEach(item => {
 
 document.getElementById('next-button').addEventListener('click', event => {
   if(answered) {
-    console.log(difficulty);
     if(difficulty >= 10) {
       document.getElementById('question').textContent = 'Mastered';
     } else {
