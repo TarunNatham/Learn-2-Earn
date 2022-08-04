@@ -32,7 +32,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', checkAuthenticated, (req, res) => {
-  res.render('dashboard.ejs', { name: req.user.name });
+  let userDate = new Date(parseInt(req.user.id)) 
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+  res.render('dashboard.ejs', { name: req.user.name, month: monthNames[userDate.getMonth()], day: userDate.getDate()});
 });
 
 app.get('/login', checkLoggedIn, (req, res) => {
@@ -44,7 +47,7 @@ app.get('/register', checkLoggedIn, (req, res) => {
 });
 
 app.get('/courses', (req, res) => {
-  res.render('courses.ejs');
+  res.render('courses.ejs', { name: req.user.name });
 });
 
 app.get('/problems', (req, res) => {
@@ -70,6 +73,7 @@ app.post('/register', async (req, res) => {
   } catch {
     res.redirect('/register');
   }
+  console.log(users);
 });
 
 function checkAuthenticated(req, res, next) {
