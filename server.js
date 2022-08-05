@@ -35,7 +35,8 @@ app.get('/', checkAuthenticated, (req, res) => {
   let userDate = new Date(parseInt(req.user.id)) 
   const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
-  res.render('dashboard.ejs', { name: req.user.name, month: monthNames[userDate.getMonth()], day: userDate.getDate()});
+  res.render('dashboard.ejs', 
+  { name: req.user.name, month: monthNames[userDate.getMonth()], day: userDate.getDate(), year: userDate.getFullYear()});
 });
 
 app.get('/login', checkLoggedIn, (req, res) => {
