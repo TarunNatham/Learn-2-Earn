@@ -21,6 +21,7 @@ const users = [];
 app.set('view-engine', 'ejs');
 app.use("/styles",express.static(__dirname + "/styles"));
 app.use("/scripts",express.static(__dirname + "/scripts"));
+app.use('/images', express.static(__dirname + '/images'));
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
 app.use(session({
@@ -47,12 +48,48 @@ app.get('/register', checkLoggedIn, (req, res) => {
   res.render('register.ejs');
 });
 
-app.get('/courses', (req, res) => {
+app.get('/courses', checkAuthenticated, (req, res) => {
   res.render('courses.ejs', { name: req.user.name });
 });
 
-app.get('/problems', (req, res) => {
+app.get('/problems', checkAuthenticated, (req, res) => {
   res.render('problems.ejs');
+});
+
+//render starting world
+app.get('/world', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+//render grade specific worlds
+app.get('/grade-one', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+app.get('/grade-two', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+app.get('/grade-three', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+app.get('/grade-four', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+app.get('/grade-five', (req, res) => {
+  res.render('test-world.ejs');
+})
+
+
+//render games
+app.get('/test-game', (req, res) => {
+  res.render('test-game.ejs');
+});
+
+app.get('/platform-game', (req, res) => {
+  res.render('platform-game.ejs');
 });
 
 app.post('/login', passport.authenticate('local', {
